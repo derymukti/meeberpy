@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_script import Server
-import sys , json, MySQLdb, redis
 from datetime import datetime, timedelta
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
