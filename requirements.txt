@@ -3,3 +3,4 @@ flask_script
 Jinja2
 datetime
 flask_sqlalchemy
+psycopg2

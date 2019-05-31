@@ -18,7 +18,7 @@
     ]
   ],
   "services": [
-    "postresql"
+    "postgresql"
   ],
   "before_install": [
     "psql -c 'create database travis_ci_test;' -U postgres"
