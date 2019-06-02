@@ -1,2 +1,2 @@
 from seed import *
-import users
+import articles

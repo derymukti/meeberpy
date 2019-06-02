@@ -1,5 +1,6 @@
 {
     "files.exclude": {
         "**/**.pyc": true
-    }
+    },
+    "python.pythonPath": "/bin/python"
 }

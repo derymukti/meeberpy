@@ -4,8 +4,12 @@ import jinja2
 my_loader = jinja2.ChoiceLoader([app.jinja_loader,jinja2.FileSystemLoader(['modules'])])
 app.jinja_loader = my_loader
 
-from users.router import users
-app.register_blueprint(users)
+from articles.router import articles
+app.register_blueprint(articles)
+
+
+
+
 
 @app.route('/')
 def index():
