@@ -17,17 +17,16 @@ class Create(Command):
 			os.makedirs(directory+'/modules')
 		try:
 			with open(directory+'/__init__.py','w') as f:
-				f.write('import router')
 				f.close()
 		except Exception as err:
 			exit(str(err))
 
-		print "Meeberpy ==> "+directory+" ::::>> Created"
-		print "Meeberpy ==> ", colored("controllers/"+name+"/modules/__init__.py","red")
-		print colored("		edit this model file for modules file","red")
-		print "Meeberpy ==> ", colored("controllers/"+name+"/router.py","red")
-		print colored("		edit this router file for add new endpoint","red")
-		print "Meeberpy ==> read github.com/derymukti/meeberpy"
+		print("Meeberpy ==> "+directory+" ::::>> Created")
+		print("Meeberpy ==> ", colored("controllers/"+name+"/modules/__init__.py","red"))
+		print(colored("		edit this model file for modules file","red"))
+		print("Meeberpy ==> ", colored("controllers/"+name+"/router.py","red"))
+		print(colored("		edit this router file for add new endpoint","red"))
+		print("Meeberpy ==> read github.com/derymukti/meeberpy")
 		return directory
 
 	def create_modules(self,name):
@@ -44,11 +43,10 @@ class Create(Command):
 	def create_router(self,name):
 		try:
 			with open('controllers/'+name+'/__init__.py', 'w') as f:
-				f.write("import router")
 				f.close()
 			with open('controllers/'+name+'/router.py', 'w') as f:
 				f.write("from flask import Blueprint, request\n")
-				f.write("from modules import *\n")
+				f.write("from .modules import *\n")
 				f.write("%s = Blueprint('%s', __name__, url_prefix='/%s')\n\n" % (name,name,name))
 				f.write("@%s.route('/')\n" % (name))
 				f.write("def index():\n")
@@ -64,9 +62,9 @@ class Create(Command):
 				data = f.readlines()
 				a = len(data) - 1
 				f.close()
-				register_controller= "from "+name+".router import "+name+"\napp.register_blueprint("+name+")\n"
+				register_controller= "from ."+name+".router import "+name+"\napp.register_blueprint("+name+")\n"
 				d = open('controllers/__init__.py','w')
-				data.insert(10,register_controller)
+				data.insert(8,register_controller)
 				d.writelines(data)
 				d.close()
 		except Exception as err:

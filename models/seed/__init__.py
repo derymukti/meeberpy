@@ -5,6 +5,6 @@ def seed_data():
         articles=Articles(title='Test Post',description='This is a description')
         db.session.add(articles)
         db.session.commit()
-        print "success seed data"
+        print("success seed data")
     except Exception as err:
         exit(err)

@@ -1,2 +1,1 @@
-from seed import *
-import articles
+from models.seed import *

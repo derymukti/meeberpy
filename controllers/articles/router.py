@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from modules import *
+from .modules import *
 articles = Blueprint('articles', __name__, url_prefix='/articles')
 @articles.route('/')
 def index():

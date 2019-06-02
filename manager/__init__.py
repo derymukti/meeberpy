@@ -14,39 +14,39 @@ managers.add_command('create:controller',Create)
 
 @managers.command
 def migrate():
-    """ To migrate model"""
-    try:
-        db.create_all()
-        print "Migrate success"
-    except Exception as err:
-		exit(str(err))
+  """ To migrate model"""
+  try:
+    db.create_all()
+    print("Migrate success")
+  except Exception as err:
+    exit(str(err))
 
 @managers.command
 def seed():
-    """ To seed data"""
-    try:
-        return seed_data()
-    except Exception as err:
-		exit(str(err))
+  """ To seed data"""
+  try:
+    return seed_data()
+  except Exception as err:
+    exit(str(err))
 
 @managers.command
 def start_gunicorn():
   """ Running with gunicorn server """
   class StandaloneApplication(gunicorn.app.base.BaseApplication):
       
-      def __init__(self, app, options=None):
-          self.options = options or {}
-          self.application = app
-          super(StandaloneApplication, self).__init__()
+    def __init__(self, app, options=None):
+        self.options = options or {}
+        self.application = app
+        super(StandaloneApplication, self).__init__()
 
-      def load_config(self):
-          config = dict([(key, value) for key, value in iteritems(self.options)
-                        if key in self.cfg.settings and value is not None])
-          for key, value in iteritems(config):
-              self.cfg.set(key.lower(), value)
+    def load_config(self):
+        config = dict([(key, value) for key, value in iteritems(self.options)
+                      if key in self.cfg.settings and value is not None])
+        for key, value in iteritems(config):
+            self.cfg.set(key.lower(), value)
 
-      def load(self):
-          return self.application
+    def load(self):
+        return self.application
   
   options = {
         'bind': '%s:%s' % (host, port),
