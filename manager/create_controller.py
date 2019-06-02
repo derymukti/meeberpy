@@ -13,6 +13,8 @@ class Create(Command):
 		directory = 'controllers/'+name
 		if not os.path.exists(directory):
 			os.makedirs(directory)
+		else:
+			exit(str('controller is exist!'))
 		if not os.path.exists(directory+'/modules'):
 			os.makedirs(directory+'/modules')
 		try:
