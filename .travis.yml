@@ -25,7 +25,8 @@
   ],
   "script": [
     "coverage run main.py migrate",
-    "coverage run main.py seed"
+    "coverage run main.py seed",
+    "coverage run main.py create:controller -n testing"
   ],
   "group": "stable",
   "dist": "trusty",
