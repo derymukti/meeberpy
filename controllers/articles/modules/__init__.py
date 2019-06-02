@@ -4,7 +4,6 @@ from models.articles import Articles
 from main import db
 
 def hello():
-    print request.args
     return "hello"
 
 def stores():

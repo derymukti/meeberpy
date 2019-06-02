@@ -1,6 +1,6 @@
 from main import app
 from manager.json_response import response
-import jinja2
+import jinja2,os
 my_loader = jinja2.ChoiceLoader([app.jinja_loader,jinja2.FileSystemLoader(['modules'])])
 app.jinja_loader = my_loader
 
@@ -13,7 +13,7 @@ app.register_blueprint(articles)
 
 @app.route('/')
 def index():
-    return "welcome to Meeber py V1.0"
+    return "welcome to Meeber py V1.0, response from %s \n" % (os.getpid())
 
 @app.errorhandler(405)
 def r405(e):

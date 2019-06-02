@@ -16,6 +16,8 @@ try:
 		port = data_json['port']
 		debug = data_json['debug']
 		secret = data_json['secret']
+		worker = data_json['worker']
+		threads = data_json['threads']
 		
 except Exception as err:
 	exit(err)
@@ -29,8 +31,6 @@ except Exception as err:
 	exit(err)
 
 import controllers
-
-running = Server(host=host,port=int(port),use_debugger=debug,use_reloader=True,threaded=True)
 import manager
 import models
 if __name__ == '__main__':
