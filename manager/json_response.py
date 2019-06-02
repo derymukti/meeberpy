@@ -1,11 +1,12 @@
 from flask import Response
-import json
-
+import json,os,uuid
 def response(data=None,code=200,message='Success'):
+	server = str(uuid.uuid3(uuid.NAMESPACE_DNS,str(os.getpid())))
 	res = {"data":data,
     		'meta': {
     			'message': message,
-				'code': code
+				'code': code,
+				'server':server
 				}
 			}
 	result = json.dumps(res)
